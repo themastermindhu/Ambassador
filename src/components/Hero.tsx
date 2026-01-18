@@ -1,7 +1,7 @@
 import { useLanguage } from '../contexts/LanguageContext';
 import { ArrowRight } from 'lucide-react';
 
-const CTA_URL = 'https://learn.microsoft.com/en-us/plans/5pdotqt4dqgpyz?tab=tab-created&sharingId=800A9978FE2F57AE&wt.mc_id=studentamb_494422';
+const CTA_URL = 'https://learn.microsoft.com/hu-hu/plans/5pdotqt4dqgpyz?sharingId=800A9978FE2F57AE&wt.mc_id=studentamb_494422';
 
 export const Hero = () => {
   const { t } = useLanguage();
