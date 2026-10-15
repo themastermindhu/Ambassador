@@ -11,7 +11,7 @@ const mail = () => svg('<rect width="20" height="16" x="2" y="4" rx="2"/><path d
 const linkedin = () => svg('<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',17);
 const diamond = '<span class="blue-spark" aria-hidden="true"></span>';
 function brand(dark = false) {
- return `<a class="brand${dark?' brand-light':''}" href="/" aria-label="Kovacs Bela Zoltan - home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-copy"><strong>KOV&#193;CS B&#201;LA ZOLT&#193;N</strong><small>MICROSOFT STUDENT AMBASSADOR</small></span></a>`;
+ return `<a class="brand${dark?' brand-light':''}" href="/" aria-label="Kovacs Bela Zoltan - home"><span class="brand-mark brand-mark-cap" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10 6 22l26 12 26-12-26-12Z" fill="currentColor"/><path d="M16 28v10.5C16 42.8 23.2 48 32 48s16-5.2 16-9.5V28" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 24v15" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="58" cy="43" r="4" fill="currentColor"/></svg></span><span class="brand-copy"><strong>KOV&#193;CS B&#201;LA ZOLT&#193;N</strong><small>MICROSOFT STUDENT AMBASSADOR</small></span></a>`;
 }
 export function render(language) {
  const t=content[language];
