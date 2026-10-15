@@ -1,0 +1,12 @@
+READY TO UPLOAD
+
+1. Open dist/.
+2. Upload EVERYTHING INSIDE dist/ to the web root (public_html, www, etc.).
+3. The Hungarian homepage is / and the English homepage is /en/.
+4. No installation or server-side runtime is needed.
+
+Canonical domain preserved from original website: https://themastermind.hu
+If publishing to a different domain, edit SITE_URL in src/content.mjs,
+robots.txt and sitemap.xml in public/, then run npm run build.
+
+Source and dist are included together in this project.
