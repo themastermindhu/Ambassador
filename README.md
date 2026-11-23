@@ -1,31 +1,25 @@
-# Kovacs Bela Zoltan | Microsoft Student Ambassador
+# Kovács Béla Zoltán — Microsoft Student Ambassador
 
-Bilingual, accessibility-conscious and SEO-ready static personal website.
+Reszponzív, magyar–angol, statikus bemutatkozó oldal. A 2026. novemberi frissítés egy tíztémás technológiai olvasnivaló-szekciót és a Student Ambassador → Associate szintlépést mutatja be.
 
-## Deploy - no build needed
+## Feltöltés
 
-1. Open the `dist/` directory.
-2. Upload **its contents** (including `en/`, `assets/`, `images/`, and `og/`) to the web hosting document root, usually `public_html/` or `www/`.
-3. Make sure your host serves `index.html` for `/` and `en/index.html` for `/en/`.
+A `dist/` **tartalmát** (nem magát a `dist` mappát) másold a `public_html/` vagy az `ambassador.themastermind.hu` aldomain dokumentumgyökerébe. A `dist/` tartalmazza a főoldalt, az angol `/en/` útvonalat, a `.htaccess`-t, a képeket, a jelvényeket és a CSS-t. A tárhelyen nincs szükség Node.js-re.
 
-Alternatively use the standalone `dist.zip` archive provided with the project.
+## Forrás szerkesztése
 
-## Make changes
+- `src/content.mjs` — magyar és angol szövegek, megjelenített Associate szint, URL-konfiguráció
+- `src/resources.mjs` — 10 hivatkozás, mindkét nyelv cikkajánlói, CTA-gombok
+- `src/render.mjs` — a weboldal HTML-struktúrája, a szintlépés és a blog renderelése
+- `src/index.css` — stílusok és mobilos töréspontok
+- `public/badges/` — a feltöltött Student Ambassador és Associate jelvények eredeti PNG és optimalizált WebP változatban
+- `public/images/` — a személyes fotó
+- `public/favicon.svg`, `public/og/` — ikon és megosztási kép
 
-- Edit Hungarian and English text: `src/content.mjs`
-- Edit page structure: `src/render.mjs`
-- Edit design and responsive styles: `src/index.css`
-- Replace the hero image: `public/images/bela-zoltan-kovacs-budapest.webp` and `.jpg`
-- Edit icons or sharing preview: `public/favicon.svg`, `public/og/og-image.jpg`
-- Rebuild with Node.js 18 or later: `npm run build` (no npm install is needed).
+Build: Node.js 18+, `npm run build` (függőségtelepítés nem szükséges).
 
-## SEO and URL setup
+## SEO / AEO
 
-The canonical domain is the original project's `https://themastermind.hu`.
-If the site is hosted at a different domain, update `SITE_URL` in `src/content.mjs` plus the URLs in `public/robots.txt` and `public/sitemap.xml`, then run `npm run build` again.
+A kanonikus domain **https://ambassador.themastermind.hu**. Ha változik, a `SITE_URL` értékét módosítani kell a `src/content.mjs`-ben, továbbá a `public/robots.txt` és `public/sitemap.xml` címeket. Utána újra kell buildelni.
 
-Includes unique Hungarian/English metadata, canonical/hreflang tags, Open Graph/Twitter cards, WebPage/Person/FAQPage JSON-LD, sitemap, robots.txt, accessible semantic HTML, the language switch, and a working contact email and LinkedIn link.
-
-## Attribution
-
-The hero photograph came from the supplied user image. The site is an independent personal webpage and is not an official Microsoft corporate website.
+A két nyelv szerverről elérhető statikus HTML, canonical, hreflang, Open Graph és JSON-LD (Person, WebPage, FAQPage, ItemList) metaadatokkal. A külső hivatkozások megőrzik az eredeti `wt.mc_id` paramétereket. A weboldal személyes, nem hivatalos Microsoft-vállalati oldal.

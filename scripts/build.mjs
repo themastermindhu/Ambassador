@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { render } from '../src/render.mjs';
 import { content, EMAIL, LINKEDIN_URL, LEARN_URL, SITE_URL } from '../src/content.mjs';
+import { resources } from '../src/resources.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dest = path.join(root,'dist');
@@ -21,6 +22,7 @@ for (const lang of ['hu','en']) {
   const schema=[
     {'@context':'https://schema.org','@type':'Person','@id':`${SITE_URL}/#person`,name:content.hu.aboutSign,alternateName:[content.en.aboutSign,'Kovacs Bela Zoltan'],url:`${SITE_URL}/`,image:`${SITE_URL}/images/bela-zoltan-kovacs-budapest.jpg`,email:`mailto:${EMAIL}`,sameAs:[LINKEDIN_URL],knowsAbout:['Microsoft Learn','Technology education','Community learning','Microsoft Student Ambassadors'],description:t.status,memberOf:{'@type':'Organization',name:'Microsoft Student Ambassadors',url:'https://studentambassadors.microsoft.com/'}},
     {'@context':'https://schema.org','@type':'WebPage','@id':`${url}#webpage`,url,name:t.pageTitle,description:t.description,inLanguage:lang,isPartOf:{'@type':'WebSite','@id':`${SITE_URL}/#website`,name:'Kovacs Bela Zoltan',url:`${SITE_URL}/`,inLanguage:['hu','en']},about:{'@id':`${SITE_URL}/#person`},primaryImageOfPage:{'@type':'ImageObject',url:`${SITE_URL}/og/og-image.jpg`},mainEntity:{'@id':`${url}#faq`},relatedLink:LEARN_URL},
+    {'@context':'https://schema.org','@type':'ItemList','@id':`${url}#blog`,name:lang==='hu'?'Technológiai ajánlók':'Technology reading list',inLanguage:lang,itemListElement:resources.map((item,index)=>({'@type':'ListItem',position:index+1,name:item[lang].title,url:item.url}))},
     {'@context':'https://schema.org','@type':'FAQPage','@id':`${url}#faq`,inLanguage:lang,mainEntity:t.faqs.map(({q,a})=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}
   ];
   const html=`<!doctype html>
@@ -37,7 +39,7 @@ for (const lang of ['hu','en']) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.pageTitle)}"><meta name="twitter:description" content="${esc(t.description)}"><meta name="twitter:image" content="${SITE_URL}/og/og-image.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/images/bela-zoltan-kovacs-budapest.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=20261124">
 <script type="application/ld+json">${safeJSON(schema)}</script>
 </head><body>${render(lang)}</body></html>`;
   const target=path.join(dest,lang==='hu'?'index.html':'en/index.html');
